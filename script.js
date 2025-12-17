@@ -1,68 +1,83 @@
 
-* {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const baseDict = {
+  teacher: "mwalimu",
+  student: "mwanafunzi",
+  friend: "rafiki",
+  mother: "mama",
+  father: "baba",
+  child: "mtoto",
+  school: "shule",
+  home: "nyumbani",
+  food: "chakula",
+  water: "maji",
+  work: "kazi",
+  love: "upendo",
+  book: "kitabu",
+  books: "vitabu",
+  tool: "zana",
+  tools: "zana",
+  equipment: "vifaa",
+  phone: "simu",
+  computer: "kompyuta",
+  at: "kwa",
+  with: "pamoja na",
+  and: "na",
+  in: "ndani ya",
+  on: "juu ya",
+  for: "kwa",
+  from: "kutoka",
+  to: "kwa",
+  i: "mimi",
+  am: "niko",
+  is: "ni",
+  are: "ni"
+};
+
+function handleSuffix(word) {
+  if (baseDict[word]) return baseDict[word];
+
+  // plural nouns
+  if (word.endsWith("s")) {
+    let singular = word.slice(0, -1);
+    if (baseDict[singular]) {
+      return "wa" + baseDict[singular].slice(2);
+    }
+  }
+
+  // verb -ing
+  if (word.endsWith("ing")) {
+    let root = word.slice(0, -3);
+    if (baseDict[root]) {
+      return "kufanya " + baseDict[root];
+    }
+    return "kufanya";
+  }
+
+  // verb -ed
+  if (word.endsWith("ed")) {
+    let root = word.slice(0, -2);
+    if (baseDict[root]) {
+      return "alifanya " + baseDict[root];
+    }
+    return "alifanya";
+  }
+
+  return word;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: #eef2f7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+function translate() {
+  const text = document.getElementById("text").value.toLowerCase().trim();
+  const result = document.getElementById("result");
 
-.container {
-  background: #ffffff;
-  width: 90%;
-  max-width: 400px;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
+  if (!text) {
+    result.textContent = "Type something first";
+    return;
+  }
 
-h1 {
-  margin-bottom: 5px;
-}
+  const words = text.split(" ");
+  const translated = words.map(w => handleSuffix(w));
 
-.subtitle {
-  color: #555;
-  margin-bottom: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  background: #1a73e8;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #1558b0;
-}
-
-#output {
-  margin-top: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #222;
-}
-
-footer {
-  margin-top: 25px;
-  font-size: 13px;
-  color: #777;
+  result.textContent = translated.join(" ");
 }
