@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transcai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
+  <div class="box">
     <h1>Transcai</h1>
-    <p class="subtitle">Instant English → Swahili Translator</p>
+    <p>English → Swahili Translator</p>
 
-    <input
-      type="text"
-      id="inputText"
-      placeholder="Type a word e.g. teacher"
-    >
+    <input id="word" type="text" placeholder="Type a word e.g. teacher">
 
-    <button id="translateBtn">Generate</button>
+    <button onclick="translate()">Generate</button>
 
-    <p id="output"></p>
+    <div id="result"></div>
+
+    <a href="https://wa.me/254759427027" target="_blank">
+      Chat on WhatsApp
+    </a>
 
     <footer>
       © made by Bundi Caleb Mugo – <span id="year"></span>
@@ -30,4 +30,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 
