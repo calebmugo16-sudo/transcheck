@@ -1,47 +1,68 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const input = document.getElementById("inputText");
-  const button = document.getElementById("translateBtn");
-  const output = document.getElementById("output");
-  const year = document.getElementById("year");
 
-  year.textContent = new Date().getFullYear();
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-  const dictionary = {
-    teacher: "mwalimu",
-    student: "mwanafunzi",
-    friend: "rafiki",
-    mother: "mama",
-    father: "baba",
-    child: "mtoto",
-    school: "shule",
-    home: "nyumbani",
-    food: "chakula",
-    water: "maji",
-    love: "upendo",
-    work: "kazi",
-    at: "kwa",
-    with: "pamoja na",
-    and: "na",
-    in: "ndani ya",
-    on: "juu ya",
-    for: "kwa",
-    from: "kutoka",
-    to: "kwa"
-  };
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #eef2f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  button.addEventListener("click", function () {
-    const text = input.value.trim().toLowerCase();
+.container {
+  background: #ffffff;
+  width: 90%;
+  max-width: 400px;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
 
-    if (text === "") {
-      output.textContent = "Please type a word";
-      return;
-    }
+h1 {
+  margin-bottom: 5px;
+}
 
-    if (dictionary[text]) {
-      output.textContent = dictionary[text];
-    } else {
-      output.textContent = "Translation not found";
-    }
-  });
-});
-calebmugo16-sudo/Smartsearch-
+.subtitle {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1558b0;
+}
+
+#output {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #222;
+}
+
+footer {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #777;
+}
